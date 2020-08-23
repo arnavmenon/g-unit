@@ -1,0 +1,48 @@
+<html lang="en">
+    <%- include("./partials/head.ejs"); %>
+
+    <body>
+
+        <%- include("./partials/nav.ejs") %>
+        <br>
+       
+        <div class="container new-releases">
+            <h3 class="row-name">New Releases</h3>            
+            <div class="row my-3">
+                
+                <% for(let i=0;i<6;i++) { %>
+                    <div class="col-lg-4 my-1" onclick="window.location.href='/games/<%=namelist[i].id%>'">
+                        <div class="card border-dark">
+                            <img src=<%= namelist[i].background_image %> class="card-img-top img-fluid">
+                            <div class="card-block bg-dark text-white px-4">
+                                <h3 class="card-title"><%= namelist[i].name%></h3>                               
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+
+                                            
+            </div> 
+            
+            
+          
+                            
+
+        </div>
+
+
+         
+
+        
+           
+
+   
+
+
+    </body>
+</html>
+
+
+
+    
+

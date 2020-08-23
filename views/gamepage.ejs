@@ -1,0 +1,157 @@
+<html lang="en">
+    <%- include("./partials/head.ejs"); %>
+
+    <head>
+        <style>
+            #gameheader{
+                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.85)), url("<%=gamedata.background_image%>");
+                width:inherit;
+                height:600px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- <%- include("./partials/nav.ejs") %> -->
+
+        <div id="gameheader">
+            <div class="mx-5">
+                <h3><%= gamedata.name %></h3>
+                <p><%= gamedata.developers[0].name %></p>
+                <br><br>
+                <p><%= gamedata.metacritic %></p>
+
+            </div>
+        </div>
+
+        <div class="gamedetails align-center my-3">
+
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="descriptor">
+                        <h3>About</h3>
+                    </div>
+                    <div id="aboutgame">
+                        <%= gamedata.description_raw %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mx-5 my-5">
+
+                <div class="col-lg-3">
+                    <div class="descriptor">
+                        <h5>Platforms</h5>
+                    </div>
+                    <div class="contents">
+                        <% gamedata.platforms.forEach(platform => { %>
+                                <%=platform.platform.name%>
+                        <% }); %>    
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="descriptor">
+                        <h5>Genre</h5>
+                    </div>
+                    <div class="contents">
+                        <% gamedata.genres.forEach(genre=> { %>
+                               <u> <%=genre.name%></u>
+                        <% }); %>    
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="descriptor">
+                        <h5>Stores</h5>
+                    </div>
+                    <div class="contents">
+                        <% gamedata.stores.forEach(store=> { %>
+                            <a href=<%=store.url%>><%=store.store.name%></a>
+                        <% }); %>    
+                    </div>
+                </div>
+
+            </div>  
+
+            <div class="row mx-5 my-5">
+                <div class="col-lg-3">
+                    <div class="descriptor">
+                        <h5>Release Date</h5>
+                    </div>
+                    <div class="contents">
+                        <%= gamedata.released %>   
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-3">
+                    <div class="descriptor">
+                        <h5>Publisher</h5>
+                    </div>
+                    <div class="contents">
+                        <%= gamedata.publishers[0].name %>   
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="descriptor">
+                        <h5>Website</h5>
+                    </div>
+                    <div class="contents">
+                        <a href=<%=gamedata.website%>><%=gamedata.website%></a>   
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="gallery mx-5">
+                <h3>Gallery</h3>
+                <div class="row">
+                    <% screenshots.forEach(pic=> { %>
+                        <div class="col-lg-3 my-1">
+                            <div class="card border-dark" onclick="window.location.href='<%=pic.image%>'">
+                                <img src=<%= pic.image %> class="card-img-top img-fluid">
+                            </div>
+                        </div>
+                    <% }); %>    
+                </div>
+            </div>
+
+            
+            <div class="suggested mx-5 my-5">
+
+             <h3>Suggested games</h3>
+
+             <div class="row">
+
+                <% for(let i=0;i<6;i++) { %>
+                    <div class="col-lg-4 my-1" onclick="window.location.href='/games/<%=suggested[i].id%>'">
+                        <div class="card border-dark">
+                            <img src=<%= suggested[i].background_image %> class="card-img-top img-fluid">
+                            <div class="card-block bg-dark text-white px-4">
+                                <h3 class="card-title"><%= suggested[i].name%></h3>                               
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            
+             </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+   
+
+
+
+
+    <script>console.log(window.innerWidth,window.innerHeight)
+        </script>    
+
+    </body>
+</html>
