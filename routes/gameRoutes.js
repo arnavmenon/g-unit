@@ -10,11 +10,10 @@ router.use(bodyParser.json());
 router.get('/', function (req, res) {
     let namelist=[];
     
-    axios.get('https://api.rawg.io/api/games?dates=2020-07-01,2020-08-20&page_size=6')
+    axios.get('https://api.rawg.io/api/games?dates=2020-06-01,2020-08-20&page_size=6')
     .then((response) => {
       //console.log(response.data);
       namelist=response.data.results;
-      //console.log(namelist.results[0].background_image);
       res.render('index',{namelist:namelist});
       
     }, (error) => {
@@ -49,6 +48,31 @@ router.get('/games/:id', function (req, res) {
       console.log(error);
     });
 });
+
+router.get('/search',function(req,res) {
+
+    res.render('search');
+
+})
+
+router.get('/search/matches/:searchText',function(req,res) {
+
+    let searchText=req.params.searchText;
+
+    //console.log("st",searchText);
+
+    axios.get(`https://api.rawg.io/api/games?page_size=18&search=${searchText}`)
+    .then((response) => {
+      
+        let namelist=response.data.results;
+        res.send(namelist);
+      
+    }, (error) => {
+      console.log(error);
+    });
+
+
+})
 
 
 

@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Francois+One&display=swap");
+
 html,body{
     margin: 0 ;
     padding: 0;  
@@ -14,7 +16,7 @@ body{
     width: 130px;
     position: relative;
     top: -10px;
-    margin-left: 80px;
+    margin-left: 0px;
     margin-right: 80px;
     
 }
@@ -50,14 +52,55 @@ hr{
     margin-bottom: 0px;
 }
 
+.gametop{
+    margin-left: 100px;
+
+}
+
 .row-name{
     font-family: 'Recursive', sans-serif;
 }
 
-/* .card{
-    border-radius: 0px;
+#gamename,#devname,#rating{
+    font-family: 'Francois One', sans-serif;
 }
 
+#gamename{
+    font-size: 80px;
+}
+#devname{
+    font-size: 30px;
+    color: rgb(167, 167, 167);
+}
+#rating{
+    color: rgb(190, 189, 189);
+    border-radius: 100px;
+    font-size: 60px;
+    padding: 10 10 10 10;
+    margin-top:200px;
+}
+
+#aboutgame{
+    font-size: 20px;
+}
+
+#searchquery{
+    width:95%;
+    margin-left: 35px;
+    margin-right: 15px;
+    border-radius: 8px;
+    height: 40px;
+}
+#searchbtn{
+    border-radius: 10px;
+    font-size: 20px;
+    margin-left: 35px;
+
+}
+ .card{
+    border:2px solid black;
+}
+/*
 .card:hover{
     transform: translate3d(-1px,-2px,0px);
     -webkit-box-shadow: 0px 0px 35px -7px rgba(255,255,255,1);
@@ -69,5 +112,6 @@ hr{
 
 body{
     margin: 0;
+    font-family: 'Francois One', sans-serif;
 }
 

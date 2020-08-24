@@ -16,19 +16,19 @@
         <!-- <%- include("./partials/nav.ejs") %> -->
 
         <div id="gameheader">
-            <div class="mx-5">
-                <h3><%= gamedata.name %></h3>
-                <p><%= gamedata.developers[0].name %></p>
+            <div class="gametop">
+                <h3 id="gamename"><%= gamedata.name %></h3>
+                <p id="devname"><%= gamedata.developers[0].name %></p>
                 <br><br>
-                <p><%= gamedata.metacritic %></p>
+                <span id="rating"><%= gamedata.metacritic %></span>
 
             </div>
         </div>
 
-        <div class="gamedetails align-center my-3">
+        <div class="gamedetails mx-5 my-3">
 
             <div class="row">
-                <div class="col-lg-10 mx-auto">
+                <div class="col-lg-10 mx-5">
                     <div class="descriptor">
                         <h3>About</h3>
                     </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="row mx-5 my-5">
+            <div class="subdetails row mx-4 my-5">
 
                 <div class="col-lg-3">
                     <div class="descriptor">
@@ -73,7 +73,7 @@
 
             </div>  
 
-            <div class="row mx-5 my-5">
+            <div class="subdetails row mx-4 my-5">
                 <div class="col-lg-3">
                     <div class="descriptor">
                         <h5>Release Date</h5>
@@ -150,8 +150,24 @@
 
 
 
-    <script>console.log(window.innerWidth,window.innerHeight)
-        </script>    
+    <script>
+        
+        let rating=document.getElementById("rating");
+
+        if(rating.innerHTML>66){
+            rating.style.backgroundColor="green";
+        }
+        else if(rating.innerHTML>33){
+            rating.style.backgroundColor="yellow";
+        }
+        else if(rating.innerHTML>0)
+            rating.style.backgroundColor="red";
+        else if(rating.innerHTML='')
+           rating.remove(); 
+    
+
+
+    </script>    
 
     </body>
 </html>

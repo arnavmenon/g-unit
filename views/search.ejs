@@ -1,0 +1,79 @@
+<html lang="en">
+    <%- include("./partials/head.ejs"); %>
+
+    <body>
+
+        <%- include("./partials/nav.ejs") %>
+        <br>
+       
+        
+        <form>        
+            <input type="text" class="mb-1" id="searchquery" name="searchquery"> 
+            
+        </form>
+
+        <button id="searchbtn">Search</button>
+
+        
+        <div id="container resultscontainer">
+            <div class="row mx-5" id="match-list"></div>
+        </div>
+        
+           
+
+   
+    <script>
+    const searchbtn=document.getElementById("searchbtn");
+    const search=document.getElementById("searchquery");
+    const matchList=document.getElementById("match-list");
+    let matches=[];
+    
+    const searchGames=async searchText=>{
+
+      
+
+      if(searchText.length!=0)
+      { const res=await fetch(`/search/matches/${searchText}`);
+        matches=await res.json();
+      }
+
+      if(searchText.length===0){
+          matches=[];   
+          matchList.innerHTML='';
+      }
+      
+      console.log(matches);
+
+      outputHtml(matches); 
+    }; 
+
+
+      const outputHtml= matches=>{
+          if(matches.length>0){
+              const html=matches.map(
+                  match=>`
+                  <div class="col-lg-4 my-1" onclick="window.location.href='/games/${match.id}'">
+                        <div class="card border-dark">
+                            <img src='${match.background_image}' class="card-img-top img-fluid">
+                            <div class="card-block bg-dark text-white px-4">
+                                <h3 class="card-title">${match.name}</h3>                               
+                            </div>
+                        </div>
+                    </div>
+                 `
+              ).join('');
+
+              matchList.innerHTML=html;
+          }
+          else{
+            matches=[];   
+            matchList.innerHTML='';
+          }
+      };
+
+    
+    searchbtn.addEventListener('click', ()=>searchGames(search.value));
+    </script>
+
+    </body>
+</html>

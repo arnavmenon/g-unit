@@ -40,9 +40,9 @@ app.use('/users',authRoute);
 
 
 //Main routes
-/* app.get('/',(req,res)=>{
-    res.render('index',{namelist:namelist});
-}) */
+/*  app.get('/',(req,res)=>{
+    res.render('index');
+})  */
 
 const gameRoutes = require('./routes/gameRoutes');
 app.use('/', gameRoutes);  
